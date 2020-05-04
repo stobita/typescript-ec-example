@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/api
+  rdb:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=example
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=example
+    ports:
+      - 5432:5432
