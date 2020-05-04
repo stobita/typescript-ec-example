@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "rdb",
+  "port": 5432,
+  "username": "example",
+  "password": "example",
+  "database": "example",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}

@@ -17,10 +17,7 @@ export class ProductsController {
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
-    this.productService.create({
-      id: '',
-      ...createProductDto,
-    });
+    this.productService.create(createProductDto);
   }
 
   @Get()
@@ -35,7 +32,7 @@ export class ProductsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    this.productService.update(id);
+    this.productService.update(id, updateProductDto);
   }
 
   @Delete(':id')
