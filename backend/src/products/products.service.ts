@@ -12,27 +12,11 @@ export class ProductsService {
     private productsRepository: Repository<Product>,
   ) {}
 
-  create(input: CreateProductDto) {
-    const product = new Product();
-    product.name = input.name;
-    return this.productsRepository.save(product);
-  }
-
   findAll() {
     return this.productsRepository.find();
   }
 
   findOne(id: string) {
     return this.productsRepository.findOne(id);
-  }
-
-  async update(id: string, updateProductDto: UpdateProductDto) {
-    const product = await this.productsRepository.findOne(id);
-    product.name = updateProductDto.name;
-    return this.productsRepository.save(product);
-  }
-
-  async remove(id: string) {
-    await this.productsRepository.delete(id);
   }
 }

@@ -1,26 +1,12 @@
-import {
-  Controller,
-  Body,
-  Param,
-  Post,
-  Get,
-  Put,
-  Delete,
-} from '@nestjs/common';
-import { UpdateProductDto } from './update-product.dto';
-import { CreateProductDto } from './create-product.dto';
+import { Controller, Param, Get, Header } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductsService) {}
 
-  @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    this.productService.create(createProductDto);
-  }
-
   @Get()
+  @Header('Content-Range', 'bytes 200-1000/67589')
   findAll() {
     return this.productService.findAll();
   }
@@ -28,15 +14,5 @@ export class ProductsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productService.findOne(id);
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    this.productService.update(id, updateProductDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    this.productService.remove(id);
   }
 }
