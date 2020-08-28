@@ -7,6 +7,11 @@ services:
       - 8080:3000
     volumes:
       - .:/api:cached
+      - /api/node_modules
+    environment:
+      - JWT_SECRET=example
+    depends_on:
+      - rdb
   rdb:
     image: postgres:12
     environment:

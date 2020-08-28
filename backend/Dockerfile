@@ -1,4 +1,7 @@
-FROM nestjs/cli
+FROM node:12.16.3
 WORKDIR /api
-RUN yarn
+COPY . .
+
+RUN yarn install && \ 
+      yarn global add @nestjs/cli
 CMD ["yarn", "run", "start:dev"]
