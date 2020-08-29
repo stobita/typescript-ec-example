@@ -5,6 +5,7 @@ import { CreateUserDto } from './users/create-user.dto';
 @Controller()
 export class AppController {
   constructor(private userService: UsersService) {}
+
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
   async login(@Request() req) {

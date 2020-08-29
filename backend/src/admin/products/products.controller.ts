@@ -8,8 +8,8 @@ import {
   Param,
   Header,
 } from '@nestjs/common';
-import { CreateProductDto } from 'src/products/create-product.dto';
-import { UpdateProductDto } from 'src/products/update-product.dto';
+import { CreateProductDto } from '../../products/create-product.dto';
+import { UpdateProductDto } from '../../products/update-product.dto';
 import { ProductsService } from './products.service';
 
 @Controller('admin/products')

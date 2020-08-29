@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './product.entity';
 import { Repository } from 'typeorm';
-import { CreateProductDto } from './create-product.dto';
-import { UpdateProductDto } from './update-product.dto';
 
 @Injectable()
 export class ProductsService {
@@ -16,7 +14,7 @@ export class ProductsService {
     return this.productsRepository.find();
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return this.productsRepository.findOne(id);
   }
 }
