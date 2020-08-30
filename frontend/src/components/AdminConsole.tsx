@@ -4,11 +4,12 @@ import restProvider from 'ra-data-simple-rest';
 import { ProductList } from './ProductList';
 import { ProductEdit } from './ProductEdit';
 import { ProductCreate } from './ProductCreate';
+import authProvider from '../adminAuthProvider';
 
 export const AdminConsole = () => {
   const dataProvider = restProvider('http://localhost:8080/admin');
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin authProvider={authProvider} dataProvider={dataProvider}>
       <Resource
         name="products"
         list={ProductList}
