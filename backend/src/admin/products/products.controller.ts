@@ -7,10 +7,12 @@ import {
   Delete,
   Param,
   Header,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateProductDto } from '../../products/create-product.dto';
 import { UpdateProductDto } from '../../products/update-product.dto';
 import { ProductsService } from './products.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('admin/products')
 export class ProductsController {
