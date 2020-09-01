@@ -11,8 +11,18 @@ export class UsersService {
     @InjectRepository(User)
     private usersRepository: Repository<User>,
   ) {}
-  async findOne(username: string): Promise<User | undefined> {
-    return this.usersRepository.findOne({ name: username });
+
+  async findOneWithRoles(id: number): Promise<User | undefined> {
+    return this.usersRepository.findOne({
+      relations: ['roles'],
+      where: { id },
+    });
+  }
+  async findOneWithPassword(username: string): Promise<User | undefined> {
+    return this.usersRepository.findOne({
+      select: ['id', 'name', 'password'],
+      where: { name: username },
+    });
   }
 
   async create(input: CreateUserDto) {

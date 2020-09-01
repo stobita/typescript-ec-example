@@ -12,9 +12,14 @@ import {
 import { CreateProductDto } from '../../products/create-product.dto';
 import { UpdateProductDto } from '../../products/update-product.dto';
 import { ProductsService } from './products.service';
+import { Roles } from 'src/auth/roles.decorator';
+import { RolesGuard } from 'src/auth/roles.guard';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('admin/products')
+@Roles('admin')
+@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard)
 export class ProductsController {
   constructor(private productService: ProductsService) {}
 
