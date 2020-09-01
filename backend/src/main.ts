@@ -6,7 +6,7 @@ async function bootstrap() {
   app.enableCors({
     origin: '*',
     allowedHeaders:
-      'Origin, Content-Type, Accept, Content-Range, range, Referer',
+      'Origin, Content-Type, Accept, Authorization, Content-Range, range, Referer',
     exposedHeaders: 'Content-Range',
   });
 
