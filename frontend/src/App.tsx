@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { AdminConsole } from './components/AdminConsole';
+import { Top } from './components/Top';
 
 function App() {
   return (
@@ -10,6 +11,9 @@ function App() {
         <Switch>
           <Route path="/admin">
             <AdminConsole></AdminConsole>
+          </Route>
+          <Route path="/">
+            <Top></Top>
           </Route>
         </Switch>
       </Router>
