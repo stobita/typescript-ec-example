@@ -15,6 +15,7 @@ import { ProductsService } from './products.service';
 import { Roles } from 'src/auth/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ValidationPipe } from '@nestjs/common';
 
 @Controller('admin/products')
 @Roles('admin')
@@ -24,7 +25,7 @@ export class ProductsController {
   constructor(private productService: ProductsService) {}
 
   @Post()
-  async create(@Body() createProductDto: CreateProductDto) {
+  async create(@Body(new ValidationPipe()) createProductDto: CreateProductDto) {
     return await this.productService.create(createProductDto);
   }
 
@@ -40,7 +41,10 @@ export class ProductsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+  update(
+    @Param('id') id: string,
+    @Body(new ValidationPipe()) updateProductDto: UpdateProductDto,
+  ) {
     this.productService.update(id, updateProductDto);
   }
 
