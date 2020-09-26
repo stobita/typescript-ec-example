@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import { AdminConsole } from './components/AdminConsole';
+import { AdminConsole } from './components/admin/AdminConsole';
 import { Top } from './components/Top';
 
 function App() {

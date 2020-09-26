@@ -1,14 +1,43 @@
-import React from 'react';
-import { List, Datagrid, TextField, DateField, NumberField } from 'react-admin';
+import {
+  createStyles,
+  GridList,
+  GridListTile,
+  GridListTileBar,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-interface Props {}
-
-export const ProductList = (props: Props) => (
-  <List {...props}>
-    <Datagrid rowClick="edit">
-      <TextField source="id" />
-      <TextField source="name" />
-      <NumberField source="price" />
-    </Datagrid>
-  </List>
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    gridList: {},
+  }),
 );
+
+// TODO: backendとの共有
+type Product = {
+  name: string;
+};
+
+export const ProductList = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    axios.get('http://localhost:8080/products').then((res) => {
+      console.log(res.data);
+      setProducts(res.data);
+    });
+  }, []);
+  const classes = useStyles();
+  return (
+    <div>
+      <GridList className={classes.gridList} cols={3}>
+        {products.map((product) => (
+          <GridListTile>
+            <GridListTileBar title={product.name}></GridListTileBar>
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  );
+};

@@ -4,7 +4,7 @@ import restProvider from 'ra-data-simple-rest';
 import { ProductList } from './ProductList';
 import { ProductEdit } from './ProductEdit';
 import { ProductCreate } from './ProductCreate';
-import authProvider from '../adminAuthProvider';
+import authProvider from '../../adminAuthProvider';
 
 export const AdminConsole = () => {
   const httpClient = (url: any, options: any = {}) => {
