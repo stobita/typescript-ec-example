@@ -1,8 +1,13 @@
 import axios from 'axios';
 
 export default {
-  login: ({ username, password }: { username: string; password: string }) => {
-    console.log('login in auth provider');
+  login: async ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => {
     axios
       .post('http://localhost:8080/auth/login', {
         username: username,
