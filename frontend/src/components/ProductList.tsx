@@ -8,17 +8,13 @@ import {
 } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Product } from 'backend/src/products/product.entity';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     gridList: {},
   }),
 );
-
-// TODO: backendとの共有
-type Product = {
-  name: string;
-};
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
